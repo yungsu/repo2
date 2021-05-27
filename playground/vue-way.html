@@ -16,18 +16,29 @@
         //Object.defineProperty(대상객체,객체속성)객체동작 재정의 값을 재정의
         // 정의할 내용
         //
-
-        Object.defineProperty(viewMode,'str',{
-            //속성에 접근했을 때의 동작을 정의
-            get: function () {
-                console.log('접근');
-            },
-            //속성에 값을 할당했을때 정의
-            set: function name(newVlaue) {
-                console.log('할당',newVlaue);
-                div.innerHTML = newVlaue;
+        (function () {
+                function init() {
+                Object.defineProperty(viewMode,'str',{
+                //속성에 접근했을 때의 동작을 정의
+                get: function () {
+                    console.log('접근');
+                },
+                //속성에 값을 할당했을때 정의
+                set: function (newValue) {
+                    console.log('할당',newValue);
+                    render(newValue);
+                }
+            });    
             }
-        })
+            
+            function render(vlaue) {
+                div.innerHTML = vlaue;
+            }
+
+            init();
+        })();
+
+        
     </script>
 </body>
 </html>
