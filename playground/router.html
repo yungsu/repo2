@@ -8,6 +8,10 @@
 </head>
 <body>
     <div id="app">
+        <div>
+            <router-link to="/login">login</router-link>
+            <router-link to="/main">main</router-link>
+        </div>
         <router-view></router-view>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,6 +25,7 @@
         }
 
         var router1 = new VueRouter({
+            mode:'history',//#뒤에 안보이게 하는것
             //페이지의 라우팅정보가 들어감 (배열)
             routes: [
                 {
