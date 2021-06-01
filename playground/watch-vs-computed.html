@@ -8,34 +8,31 @@
 </head>
 <body>
     <div id="app">
-        {{num}}
-        <button v-on:click="addNum">increase</button>
-        <button v-on:click="reduceNum">decrease</button>
+        {{ num }}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el:'#app',
-            data:{
+            data: {
                 num:10
             },
-            watch:{
-                num: function(){
-                    this.logText();
+            computed:{ // 단순한값
+                doubleNum:function(){
+                    return this.num * 2;
                 }
             },
-            methods :{
-                addNum: function(){
-                    this.num ++;
-                },
-                reduceNum: function(){
-                    this.num--;
-                },
-                logText: function(){
-                    console.log('chenged');
+            watch: {//무거운 로직 매번실행되는것, 데이터요청
+                num: function(){
+                    this.fetchUserByNumber(newValue);
                 }
-
+            },
+            methods: {
+                fetchUserByNumber:function(num){
+                    console.log();
+                    //axios.get(num);
+                }
             }
         })
 
